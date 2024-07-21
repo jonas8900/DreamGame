@@ -28,7 +28,7 @@ export default createGlobalStyle`
         --beige-color: #c2b299;
         --darkorange-color: #f95738;
         --lightgreen-color: #CBD4C2;
-        --font-size-header: 1.375rem;
+        --font-size-header: 1.6rem;
         --font-size-subheader: 1.125rem;
         --font-size-description: 0.875rem;
         --font-size-icon-description: 0.75rem;
