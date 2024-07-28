@@ -1,6 +1,7 @@
 import { AccountCircle } from "@mui/icons-material";
 import { Search } from "@mui/icons-material"
 import { Close } from "@mui/icons-material";
+import Link from "next/link";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -11,10 +12,6 @@ export default function PageHead({pageheadline}) {
 
     function handleOpenSearch() {
         setSearchOpen(!searchOpen);
-    }
-
-    function handleOpenAccount() {
-        alert("Account is not implemented");
     }
 
     function handleInputChange(event) {
@@ -42,8 +39,7 @@ export default function PageHead({pageheadline}) {
             <StyledSearch onClick={handleOpenSearch}></StyledSearch>
             </>
         )}
-        
-        <StyledAccountCircle onClick={handleOpenAccount}><StyledButton></StyledButton></StyledAccountCircle>
+        <StyledLink href="/login"><StyledAccountCircle></StyledAccountCircle></StyledLink>
         </StyledDiv>
     )
 }
@@ -101,11 +97,14 @@ justify-self: end;
 const StyledAccountCircle = styled(AccountCircle)`
 color: var(--darkgrey-color);
 font-size: 2.0625rem;
-grid-area: 1 / 3 / 2 / 4;
-justify-self: end;
 &:active {
     color: var(--darkorange-color);
 }
+`;
+
+const StyledLink = styled(Link)`
+grid-area: 1 / 3 / 2 / 4;
+justify-self: end;
 `;
 
 const StyledInput = styled.input`
