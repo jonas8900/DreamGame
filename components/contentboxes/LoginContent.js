@@ -16,7 +16,7 @@ export default function LoginContent() {
     }
 
     return (
-        <>
+        <StyledContentDiv>
             <StyledHeadline>Jetzt bei <StyledSpan>DreamGame</StyledSpan> anmelden</StyledHeadline>
                 <StyledForm>
                     <StyledLabel htmlFor="emailadress">Email Adresse</StyledLabel>
@@ -37,9 +37,14 @@ export default function LoginContent() {
                     <StyledGoogleButton><Image src="/icons/icons8-google.svg" alt="google-icon" width={22} height={22}/>Login mit Google</StyledGoogleButton>
                 </StyledGoogleWrapper>
                 <StyledRegisterLink href="">Noch keinen Account? Jetzt Registrieren</StyledRegisterLink>
-        </>
+        </StyledContentDiv>
     );
 }
+
+const StyledContentDiv = styled.div`
+    margin-bottom: 5rem;
+`;
+
 
 const StyledHeadline = styled.h1`
     font-size: 1.25rem;
