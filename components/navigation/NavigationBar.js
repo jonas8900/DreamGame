@@ -23,17 +23,17 @@ export default function NavigationBar() {
             </StyledIconWrapper>
         
             <StyledIconWrapper>
-                <Link href=""><StyledHomeIcon></StyledHomeIcon></Link>
+                <Link href="/"><StyledHomeIcon></StyledHomeIcon></Link>
                 <StyledParagraph>Home</StyledParagraph>
             </StyledIconWrapper>
 
             <StyledIconWrapper>
-                <Link href=""><StyledNewReleasesIcon></StyledNewReleasesIcon></Link>
+                <Link href="/newgames"><StyledNewReleasesIcon></StyledNewReleasesIcon></Link>
                 <StyledParagraph>Neuste Spiele</StyledParagraph>
             </StyledIconWrapper>
 
             <StyledIconWrapper>
-                <Link href=""><StyledSportsEsportsIcon></StyledSportsEsportsIcon></Link>
+                <Link href="/favorites"><StyledSportsEsportsIcon></StyledSportsEsportsIcon></Link>
                 <StyledParagraph>Favoriten</StyledParagraph>
             </StyledIconWrapper>
 
@@ -51,6 +51,7 @@ const StyledNav = styled.nav`
     padding: 0.6rem;
     display: flex;
     justify-content: space-around;
+
 `;
 
 const StyledExploreIcon = styled(ExploreOutlined)`
