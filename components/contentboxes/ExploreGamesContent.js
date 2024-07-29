@@ -31,7 +31,7 @@ export default function ExploreGamesContent({setFavoriteGameId, favoriteGameId})
 
 
     return(
-        <main>
+        <StyledMain>
         <StyledContentDiv>
             <StyledImage src={RawData[randomNumber].image} alt="Game of the Day" width={500} height={300}/>
             <StyledTextContainer>
@@ -110,9 +110,13 @@ export default function ExploreGamesContent({setFavoriteGameId, favoriteGameId})
                 }
             <StyledCloseCircleIcon/>
         </StyledRatingDiv>
-    </main>
+    </StyledMain>
 )
 }
+
+const StyledMain = styled.main`
+    position: relative;
+`;
 
 const StyledHeadlineDiv = styled.div`
     display: flex;
@@ -137,7 +141,7 @@ const StyledSecondHeadline = styled.h2`
 const StyledContentDiv = styled.div`
     border-radius: 4px; 
     background-color: var(--lightgreen-color);
-    margin: auto 1rem 1rem 1rem;
+    margin: auto 1rem 10rem 1rem;
     display: flex;
     flex-direction: column;
 `;
@@ -248,7 +252,10 @@ const StyledRatingDiv = styled.div`
     border-radius: 45px;
     background-color: var(--darkgrey-color);
     height: 4.6rem;
-    margin:  1rem 3.5rem;
+    position: fixed;
+    bottom: 5rem;
+    right: 2rem;
+    left: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
