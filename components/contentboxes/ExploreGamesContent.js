@@ -102,14 +102,14 @@ export default function ExploreGamesContent({setFavoriteGameId, favoriteGameId})
             </StyledTextContainer>
             <MoreInformationButton/>
         </StyledContentDiv>
-        <StyledRatingDiv>
+        <StyledRatingsDiv>
             <StyledCheckCircleIcon/>
             {favoriteGameId.includes(RawData[randomNumber].id) ? 
                     <StyledFavoriteIconClicked onClick={() => handleRemoveFromFavorites(RawData[randomNumber].id)}/> : 
                     <StyledFavoriteIconNotClicked onClick={() => handleAddToFavorites(RawData[randomNumber].id)}/>
                 }
             <StyledCloseCircleIcon/>
-        </StyledRatingDiv>
+        </StyledRatingsDiv>
     </StyledMain>
 )
 }
@@ -248,7 +248,7 @@ const StyledFavoriteIconNotClicked = styled(Favorite)`
     stroke: var(--darkorange-color);
 `;
 
-const StyledRatingDiv = styled.div`
+const StyledRatingsDiv = styled.div`
     border-radius: 45px;
     background-color: var(--darkgrey-color);
     height: 4.6rem;
