@@ -10,11 +10,12 @@ import { Computer } from "@mui/icons-material";
 import { ThumbsUpDown } from "@mui/icons-material";
 import MoreInformationButton from "../buttons/MoreInformationButton";
 import { CheckCircle } from "@mui/icons-material";
+import { FilterList } from "@mui/icons-material";
 
 
 export default function ExploreGamesContent({setFavoriteGameId, favoriteGameId}) {
 
-    const randomNumber = 2;
+    const randomNumber = 1;
 
     function handleAddToFavorites(gameId) {
         if(favoriteGameId.includes(gameId)) {
@@ -104,10 +105,7 @@ export default function ExploreGamesContent({setFavoriteGameId, favoriteGameId})
         </StyledContentDiv>
         <StyledRatingsDiv>
             <StyledCheckCircleIcon/>
-            {favoriteGameId.includes(RawData[randomNumber].id) ? 
-                    <StyledFavoriteIconClicked onClick={() => handleRemoveFromFavorites(RawData[randomNumber].id)}/> : 
-                    <StyledFavoriteIconNotClicked onClick={() => handleAddToFavorites(RawData[randomNumber].id)}/>
-                }
+                <StyledFilterListIcon></StyledFilterListIcon>
             <StyledCloseCircleIcon/>
         </StyledRatingsDiv>
     </StyledMain>
@@ -240,12 +238,14 @@ const StyledEuroIcon = styled(Euro)`
 const StyledFavoriteIconClicked = styled(Favorite)`
     font-size: 2rem;
     fill: var(--darkorange-color);
+    margin-top: 1rem;
 `;
 
 const StyledFavoriteIconNotClicked = styled(Favorite)`
     font-size: 2rem;
     fill: transparent;
     stroke: var(--darkorange-color);
+    margin-top: 1rem;
 `;
 
 const StyledRatingsDiv = styled.div`
@@ -281,5 +281,16 @@ const StyledCloseCircleIcon = styled(Cancel)`
 
     &:active {
         color: #d4822f;
+    }
+`;
+
+const StyledFilterListIcon = styled(FilterList)`
+    width: 40px;
+    height: 40px;
+    color: var(--darkorange-color);
+    margin: 1.5rem auto auto auto;
+
+    &:active {
+        color: var(--darkorange-color);
     }
 `;
