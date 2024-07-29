@@ -13,7 +13,7 @@ export default function NavigationBar() {
     return(
         <StyledNav>
             <StyledIconWrapper>
-                <Link href=""><StyledExploreIcon></StyledExploreIcon></Link>
+                <Link href="/exploregames"><StyledExploreIcon></StyledExploreIcon></Link>
                 <StyledParagraph>Entdecken</StyledParagraph>
             </StyledIconWrapper>
 

@@ -6,20 +6,23 @@ import { Public } from "@mui/icons-material";
 import { FiberNew } from "@mui/icons-material";
 import { Euro } from "@mui/icons-material";
 import { Favorite } from "@mui/icons-material";
-import { useState } from "react";
 
-export default function NewGameContent() {
-    const [clickedId, setClickedId] = useState([]);
-    
-    function handleFavoriteButton(id) {
-        if (RawData.find((game) => game.id === id)) {
-            if (clickedId.includes(id)) {
-                setClickedId(clickedId.filter((gameId) => gameId !== id));
-            } else {
-                setClickedId([...clickedId, id]);
-            }
+
+export default function NewGameContent({setFavoriteGameId, favoriteGameId}) {
+
+    function handleAddToFavorites(gameId) {
+        if(favoriteGameId.includes(gameId)) {
+            return;
+        } else {
+            setFavoriteGameId([...favoriteGameId, gameId]);
         }
     }
+    
+    function handleRemoveFromFavorites(gameId) {
+        const newFavoriteGameId = favoriteGameId.filter((id) => id !== gameId);
+        setFavoriteGameId(newFavoriteGameId);
+    }
+
 
     return(
         <main>
@@ -29,9 +32,9 @@ export default function NewGameContent() {
                         <StyledTextContainer>
                             <StyledHeadWrapper>
                                 <StyledHeadline>{game.name}</StyledHeadline>
-                                {clickedId.includes(game.id)? 
-                                <StyledFavoriteIconClicked onClick={() => handleFavoriteButton(game.id)}/> : 
-                                <StyledFavoriteIconNotClicked onClick={() => handleFavoriteButton(game.id)}/>}
+                                {favoriteGameId.includes(game.id)? 
+                                <StyledFavoriteIconClicked onClick={() => handleRemoveFromFavorites(game.id)}/> : 
+                                <StyledFavoriteIconNotClicked onClick={() => handleAddToFavorites(game.id)}/>}
                             </StyledHeadWrapper>
                             <StyledSecondHeadline>{game.gametype}</StyledSecondHeadline>
                             <StyledLine/>

@@ -4,11 +4,11 @@ import PageHead from "@/components/head/PageHead";
 import NavigationBar from "@/components/navigation/NavigationBar";
 
 
-export default function favorites() {
+export default function favorites({setFavoriteGameId, favoriteGameId}) {
     return (
         <>
-        <PageHead pageheadline={"Neuste Spiele"}/>
-        <FavoritesContent/>
+        <PageHead pageheadline={"Favoriten"}/>
+        <FavoritesContent setFavoriteGameId={setFavoriteGameId} favoriteGameId={favoriteGameId}/>
         <NavigationBar/>
         </>
     )
