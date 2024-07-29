@@ -18,7 +18,7 @@ export default function NavigationBar() {
             </StyledIconWrapper>
 
             <StyledIconWrapper>
-                <Link href=""><StyledListIcon></StyledListIcon></Link>
+                <Link href="/gamelist"><StyledListIcon></StyledListIcon></Link>
                 <StyledParagraph>Spielerliste</StyledParagraph>
             </StyledIconWrapper>
         
