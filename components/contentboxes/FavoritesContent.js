@@ -3,34 +3,41 @@ import { RawData } from "@/rawdata";
 import Image from "next/image";
 import { styled } from "styled-components";
 import { Favorite } from "@mui/icons-material";
-import { useState } from "react";
 import MoreInformationButton from "../buttons/MoreInformationButton";
 
-export default function FavoritesContent() {
-    const [clickedId, setClickedId] = useState([]);
-    
-    function handleFavoriteButton(id) {
-        if (RawData.find((game) => game.id === id)) {
-            if (clickedId.includes(id)) {
-                setClickedId(clickedId.filter((gameId) => gameId !== id));
-            } else {
-                setClickedId([...clickedId, id]);
-            }
+export default function FavoritesContent({setFavoriteGameId, favoriteGameId}) {
+
+    const favoriteGames = RawData.filter((game) => favoriteGameId.includes(game.id));
+
+
+    function handleAddToFavorites(gameId) {
+        if(favoriteGameId.includes(gameId)) {
+            return;
+        } else {
+            setFavoriteGameId([...favoriteGameId, gameId]);
         }
     }
+    
+    function handleRemoveFromFavorites(gameId) {
+        const newFavoriteGameId = favoriteGameId.filter((id) => id !== gameId);
+        alert("Spiel wurde aus den Favoriten entfernt");
+        setFavoriteGameId(newFavoriteGameId);
+    }
+
 
 
     return (
         <main>
-        {RawData.map((game) => (
+        {favoriteGames.map((game) => (
             <StyledContentDiv key={game.id}>
                 <StyledImage src={game.image} alt="Game of the Day" width={500} height={300}/>
                 <StyledTextContainer>
                     <StyledHeadWrapper>
                         <StyledHeadline>{game.name}</StyledHeadline>
-                        {clickedId.includes(game.id)? 
-                        <StyledFavoriteIconClicked onClick={() => handleFavoriteButton(game.id)}/> : 
-                        <StyledFavoriteIconNotClicked onClick={() => handleFavoriteButton(game.id)}/>}
+                        {favoriteGameId.includes(game.id) ? 
+                             <StyledFavoriteIconClicked onClick={() => handleRemoveFromFavorites(game.id)}/> : 
+                             <StyledFavoriteIconNotClicked onClick={() => handleAddToFavorites(game.id)}/>
+                        }
                     </StyledHeadWrapper>
                     <StyledSecondHeadline>{game.gametype}</StyledSecondHeadline>
                 </StyledTextContainer>

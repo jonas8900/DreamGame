@@ -1,15 +1,21 @@
 import Head from "next/head";
 import GlobalStyle from "../styles";
+import useLocalStorage from "use-local-storage";
+import { useState } from "react";
 
 
 export default function App({ Component, pageProps }) {
+    const [favoriteGameId, setFavoriteGameId] = useLocalStorage("favoriteGameId", []);
+
+
+
     return (
         <>
             <Head>
                 <meta name="viewport" content="width=device-width,initial-scale=1" />
                 <title>DreamGame</title>
                 <meta name="description" content="Das was du für dein Gamingstand brauchst!" />
-                <link rel="shortcut icon" href="/favicon.ico" />
+                <link rel="shortcut icon" href="/icons/icon-192x192.png" />
                 <link rel="mask-icon" href="/icons/icon-192x192.png" color="#FFFFFF" />
                 <meta name="theme-color" content="#ffffff" />
                 <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
@@ -33,7 +39,7 @@ export default function App({ Component, pageProps }) {
                 <meta property="og:image" content="/icons/icon-512x512.png" />
             </Head>
             <GlobalStyle />
-            <Component {...pageProps} />
+            <Component {...pageProps} setFavoriteGameId={setFavoriteGameId} favoriteGameId={favoriteGameId} />
         </>
     );
 }

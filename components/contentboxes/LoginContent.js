@@ -6,6 +6,7 @@ import Image from "next/image";
 
 export default function LoginContent() {
     const [typeSwitch, setTypeSwitch] = useState('password');
+    
 
     function handlePasswortTypeHidden() {
         setTypeSwitch('text');

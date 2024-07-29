@@ -8,13 +8,29 @@ import { ThumbsUpDown } from "@mui/icons-material";
 import { FiberNew } from "@mui/icons-material";
 import { Euro } from "@mui/icons-material";
 import MoreInformationButton from "../buttons/MoreInformationButton";
+import useLocalStorage from "use-local-storage";
+import { Favorite } from "@mui/icons-material";
 
-export default function GameOfTheDayContent() {
-    
+export default function GameOfTheDayContent({setFavoriteGameId, favoriteGameId}) {
+  
     
     function handleRandomNumber() {
         // return Math.floor(Math.random() * RawData.length);
         return 2;
+    }
+
+    function handleAddToFavorites(gameId) {
+        if(favoriteGameId.includes(gameId)) {
+            return;
+        } else {
+            setFavoriteGameId([...favoriteGameId, gameId]);
+        }
+    }
+    
+    function handleRemoveFromFavorites(gameId) {
+        const newFavoriteGameId = favoriteGameId.filter((id) => id !== gameId);
+        setFavoriteGameId(newFavoriteGameId);
+        console.log("remove");
     }
 
     const randomNumber = handleRandomNumber();
@@ -24,7 +40,13 @@ export default function GameOfTheDayContent() {
             <StyledContentDiv>
                 <StyledImage src={RawData[randomNumber].image} alt="Game of the Day" width={500} height={300}/>
                 <StyledTextContainer>
+                    <StyledHeadlineDiv>
                     <StyledHeadline>{RawData[randomNumber].name}</StyledHeadline>
+                    {favoriteGameId.includes(RawData[randomNumber].id) ? 
+                        <StyledFavoriteIconClicked onClick={() => handleRemoveFromFavorites(RawData[randomNumber].id)}/> : 
+                        <StyledFavoriteIconNotClicked onClick={() => handleAddToFavorites(RawData[randomNumber].id)}/>
+                    }
+                    </StyledHeadlineDiv>
                     <StyledSecondHeadline>{RawData[randomNumber].gametype}</StyledSecondHeadline>
                     <StyledIntroductionParagraph>{RawData[randomNumber].description}</StyledIntroductionParagraph>
                     <StyledPlattformsWrapper>
@@ -89,6 +111,12 @@ export default function GameOfTheDayContent() {
         </main>
     )
 }
+
+const StyledHeadlineDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
 
 const StyledHeadline = styled.h1`
     font-size: 1.4rem;
@@ -205,13 +233,13 @@ height: 33px;
 color: var(--darkorange-color);
 `;
 
-const StyledMoreInformationButton = styled.button`
-    border-radius: 4px; 
-    width: 102px;
-    height: 36px;
-    background-color: var(--darkorange-color);
-    border: none;
-    margin: 1rem auto 1rem auto;
+const StyledFavoriteIconClicked = styled(Favorite)`
+    font-size: 2rem;
+    fill: var(--darkorange-color);
+`;
 
-    color: var(--white-color);
+const StyledFavoriteIconNotClicked = styled(Favorite)`
+    font-size: 2rem;
+    fill: transparent;
+    stroke: var(--darkorange-color);
 `;
