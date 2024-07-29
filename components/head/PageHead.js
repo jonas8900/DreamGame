@@ -2,12 +2,16 @@ import { AccountCircle } from "@mui/icons-material";
 import { Search } from "@mui/icons-material"
 import { Close } from "@mui/icons-material";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
 
 
 export default function PageHead({pageheadline}) {
     const [searchOpen, setSearchOpen] = useState(false);
+    const router = useRouter();
+    const pathname = router.pathname;
+    const routeToPath = "/login";
 
 
     function handleOpenSearch() {
@@ -18,8 +22,6 @@ export default function PageHead({pageheadline}) {
         const formElement = event.target.form;
         const formData = new FormData(formElement);
         const searchedData = Object.fromEntries(formData);
-    
-        console.log(searchedData);
     }
     
 
@@ -39,7 +41,7 @@ export default function PageHead({pageheadline}) {
             <StyledSearch onClick={handleOpenSearch}></StyledSearch>
             </>
         )}
-        <StyledLink href="/login"><StyledAccountCircle></StyledAccountCircle></StyledLink>
+        <StyledLink href={routeToPath}><StyledAccountCircle active={pathname === routeToPath ? 1 : 0}></StyledAccountCircle></StyledLink>
         </StyledDiv>
     )
 }
@@ -95,7 +97,7 @@ justify-self: end;
 
 
 const StyledAccountCircle = styled(AccountCircle)`
-color: var(--darkgrey-color);
+color: ${props => props.active ? 'var(--darkorange-color)' : 'var(--darkgrey-color)'};
 font-size: 2.0625rem;
 &:active {
     color: var(--darkorange-color);

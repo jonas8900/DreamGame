@@ -5,42 +5,58 @@ import { Home } from "@mui/icons-material";
 import { NewReleases } from "@mui/icons-material";
 import { SportsEsports } from "@mui/icons-material";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 
 export default function NavigationBar() {
+    const router = useRouter();
+    const pathname = router.pathname;
+    const routeToPathExplore = "/exploregames";
+    const routeToPathGameList = "/gamelist";
+    const routeToPathHome = "/";
+    const routeToPathNewGames = "/newgames";
+    const routeToPathFavorites = "/favorites";
 
 
-
-    return(
+    return (
         <StyledNav>
             <StyledIconWrapper>
-                <Link href="/exploregames"><StyledExploreIcon></StyledExploreIcon></Link>
+                <Link href={routeToPathExplore}>
+                    <StyledExploreIcon active={pathname === routeToPathExplore ? 1 : 0} />
+                </Link>
                 <StyledParagraph>Entdecken</StyledParagraph>
             </StyledIconWrapper>
 
             <StyledIconWrapper>
-                <Link href="/gamelist"><StyledListIcon></StyledListIcon></Link>
+                <Link href={routeToPathGameList}>
+                    <StyledListIcon active={pathname === routeToPathGameList ? 1 : 0} />
+                </Link>
                 <StyledParagraph>Spielerliste</StyledParagraph>
             </StyledIconWrapper>
         
             <StyledIconWrapper>
-                <Link href="/"><StyledHomeIcon></StyledHomeIcon></Link>
+                <Link href={routeToPathHome}>
+                    <StyledHomeIcon active={pathname === routeToPathHome ? 1 : 0} />
+                </Link>
                 <StyledParagraph>Home</StyledParagraph>
             </StyledIconWrapper>
 
             <StyledIconWrapper>
-                <Link href="/newgames"><StyledNewReleasesIcon></StyledNewReleasesIcon></Link>
+                <Link href={routeToPathNewGames}>
+                    <StyledNewReleasesIcon active={pathname === routeToPathNewGames ? 1 : 0} />
+                </Link>
                 <StyledParagraph>Neuste Spiele</StyledParagraph>
             </StyledIconWrapper>
 
             <StyledIconWrapper>
-                <Link href="/favorites"><StyledSportsEsportsIcon></StyledSportsEsportsIcon></Link>
+                <Link href={routeToPathFavorites}>
+                    <StyledSportsEsportsIcon active={pathname === routeToPathFavorites ? 1 : 0} />
+                </Link>
                 <StyledParagraph>Favoriten</StyledParagraph>
             </StyledIconWrapper>
-
         </StyledNav>
-    )
+    );
 }
-
 const StyledNav = styled.nav`
     border: 1px solid black;
     position: fixed; 
@@ -55,7 +71,7 @@ const StyledNav = styled.nav`
 `;
 
 const StyledExploreIcon = styled(ExploreOutlined)`
-    color: var(--darkgrey-color);
+    color: ${props => props.active ? 'var(--darkorange-color)' : 'var(--darkgrey-color)'};
     font-size: 2rem;
     &:active {  
         color: var(--darkorange-color);
@@ -63,7 +79,7 @@ const StyledExploreIcon = styled(ExploreOutlined)`
 `;
 
 const StyledListIcon = styled(List)`
-    color: var(--darkgrey-color);
+    color: ${props => props.active ? 'var(--darkorange-color)' : 'var(--darkgrey-color)'};
     font-size: 2rem;
     &:active {  
         color: var(--darkorange-color);
@@ -71,7 +87,7 @@ const StyledListIcon = styled(List)`
 `;
 
 const StyledHomeIcon = styled(Home)`
-    color: var(--darkgrey-color);
+    color: ${props => props.active ? 'var(--darkorange-color)' : 'var(--darkgrey-color)'};
     font-size: 2rem;
     &:active {  
         color: var(--darkorange-color);
@@ -79,7 +95,7 @@ const StyledHomeIcon = styled(Home)`
 `;
 
 const StyledNewReleasesIcon = styled(NewReleases)`
-    color: var(--darkgrey-color);
+    color: ${props => props.active ? 'var(--darkorange-color)' : 'var(--darkgrey-color)'};
     font-size: 2rem;
     &:active {  
         color: var(--darkorange-color);
@@ -87,7 +103,7 @@ const StyledNewReleasesIcon = styled(NewReleases)`
 `;
 
 const StyledSportsEsportsIcon = styled(SportsEsports)`
-    color: var(--darkgrey-color);
+    color: ${props => props.active ? 'var(--darkorange-color)' : 'var(--darkgrey-color)'};
     font-size: 2rem;
     &:active {  
         color: var(--darkorange-color);
