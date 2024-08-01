@@ -67,7 +67,7 @@ const StyledNav = styled.nav`
     padding: 0.6rem;
     display: flex;
     justify-content: space-around;
-
+    z-index: 99;
 `;
 
 const StyledExploreIcon = styled(ExploreOutlined)`
