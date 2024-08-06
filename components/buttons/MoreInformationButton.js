@@ -1,8 +1,9 @@
+import { Children } from "react";
 import styled from "styled-components";
 
-export default function MoreInformationButton({onClick}) {
+export default function MoreInformationButton({onClick, children}) {
     return(
-        <StyledMoreInformationButton onClick={onClick}>Mehr Infos</StyledMoreInformationButton>
+        <StyledMoreInformationButton onClick={onClick}>{children}</StyledMoreInformationButton>
     )
 }
 

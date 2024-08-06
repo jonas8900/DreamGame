@@ -20,7 +20,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/palworldgame",
             instagram: "https://www.instagram.com/palworldgame"
         },
-        trailer: "https://www.youtube.com/watch?v=3Q3z1YJYX4E",
+        trailer: "https://www.youtube.com/watch?v=3Q3z1YJYX4E", // Verfügbar
         releaseDate: "Q2 2024"
     },
     {
@@ -44,7 +44,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/HollowKnightGame",
             instagram: "https://www.instagram.com/hollowknightgame"
         },
-        trailer: "https://www.youtube.com/watch?v=UAO2urG23S4",
+        trailer: "https://www.youtube.com/watch?v=UAO2urG23S4", // Verfügbar
         releaseDate: "February 24, 2017"
     },
     {
@@ -68,7 +68,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/thewitcher",
             instagram: "https://www.instagram.com/thewitcher"
         },
-        trailer: "https://www.youtube.com/watch?v=c0i88t0Kacs",
+        trailer: "https://www.youtube.com/watch?v=c0i88t0Kacs", // Verfügbar
         releaseDate: "May 18, 2015"
     },
     {
@@ -92,7 +92,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/dota2",
             instagram: "https://www.instagram.com/dota2"
         },
-        trailer: "https://www.youtube.com/watch?v=-cSFPIwMEq4",
+        trailer: "https://www.youtube.com/watch?v=-cSFPIwMEq4", // Verfügbar
         releaseDate: "July 9, 2013"
     },
     {
@@ -116,7 +116,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/rockstargames",
             instagram: "https://www.instagram.com/rockstargames"
         },
-        trailer: "https://www.youtube.com/watch?v=QkkoHAzjnUs",
+        trailer: "https://www.youtube.com/watch?v=QkkoHAzjnUs", // Verfügbar
         releaseDate: "September 17, 2013"
     },
     {
@@ -140,7 +140,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/TerrariaOfficial",
             instagram: "https://www.instagram.com/terrariaofficial"
         },
-        trailer: "https://www.youtube.com/watch?v=EVC63I2t4mY",
+        trailer: "https://www.youtube.com/watch?v=EVC63I2t4mY", // Verfügbar
         releaseDate: "May 16, 2011"
     },
     {
@@ -164,7 +164,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/CyberpunkGame",
             instagram: "https://www.instagram.com/cyberpunkgame"
         },
-        trailer: "https://www.youtube.com/watch?v=8X2kIfS6fb8",
+        trailer: "https://www.youtube.com/watch?v=8X2kIfS6fb8", // Verfügbar
         releaseDate: "December 10, 2020"
     },
     {
@@ -188,7 +188,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/dyinglightgame",
             instagram: "https://www.instagram.com/dyinglightgame"
         },
-        trailer: "https://www.youtube.com/watch?v=6uTh9XP2wIo",
+        trailer: "https://www.youtube.com/watch?v=6uTh9XP2wIo", // Verfügbar
         releaseDate: "January 27, 2015"
     },
     {
@@ -212,7 +212,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/rockstargames",
             instagram: "https://www.instagram.com/rockstargames"
         },
-        trailer: "https://www.youtube.com/watch?v=eaW0tYpxyp0",
+        trailer: "https://www.youtube.com/watch?v=eaW0tYpxyp0", // Verfügbar
         releaseDate: "October 26, 2018"
     },
     {
@@ -236,12 +236,12 @@ export const RawData = [
             facebook: "https://www.facebook.com/celestegame",
             instagram: "https://www.instagram.com/celestegame"
         },
-        trailer: "https://www.youtube.com/watch?v=ioOndLieupI",
+        trailer: "https://www.youtube.com/watch?v=ioOndLieupI", // Verfügbar
         releaseDate: "January 25, 2018"
     },
     {
         id: 11,
-        image: "https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg",
+        image: "https://cdn.akamai.steamstatic.com/steam/apps/548430/header.jpg",
         name: "Minecraft",
         gametype: "Sandbox, Survival",
         description: "Minecraft is a game about placing blocks and going on adventures.",
@@ -260,7 +260,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/minecraft",
             instagram: "https://www.instagram.com/minecraft"
         },
-        trailer: "https://www.youtube.com/watch?v=MmB9b5njVbA",
+        trailer: "https://www.youtube.com/watch?v=MmB9b5njVbA", // Verfügbar
         releaseDate: "November 18, 2011"
     },
     {
@@ -284,7 +284,7 @@ export const RawData = [
             facebook: "https://www.facebook.com/JoinDeepRock",
             instagram: "https://www.instagram.com/joindeeprock"
         },
-        trailer: "https://www.youtube.com/watch?v=ytKZHUURZDQ",
+        trailer: "https://www.youtube.com/watch?v=2_GV33zBf3A", // Verfügbar
         releaseDate: "May 13, 2020"
     }
 ];

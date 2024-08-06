@@ -2,10 +2,21 @@ import Head from "next/head";
 import GlobalStyle from "../styles";
 import useLocalStorage from "use-local-storage";
 import { useState } from "react";
+import { RawData } from "@/rawdata";
 
 
 export default function App({ Component, pageProps }) {
     const [favoriteGameId, setFavoriteGameId] = useLocalStorage("favoriteGameId", []);
+    const [currentGameId, setCurrentGameId] = useState(null);
+    const [gameOfTheDay, setGameOfTheDay] = useState(null);
+
+    function handleGameOfTheDay() {
+        const randomGameId = Math.floor(Math.random() * RawData.length);
+        setGameOfTheDay(randomGameId);
+    }
+
+
+    
 
 
 
@@ -39,7 +50,7 @@ export default function App({ Component, pageProps }) {
                 <meta property="og:image" content="/icons/icon-512x512.png" />
             </Head>
             <GlobalStyle />
-            <Component {...pageProps} setFavoriteGameId={setFavoriteGameId} favoriteGameId={favoriteGameId} />
+            <Component {...pageProps} setFavoriteGameId={setFavoriteGameId} favoriteGameId={favoriteGameId} currentGameId={currentGameId} setCurrentGameId={setCurrentGameId}/>
         </>
     );
 }
