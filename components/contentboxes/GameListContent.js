@@ -1,23 +1,83 @@
-import { RawData } from "@/rawdata";
-import Image from "next/image";
-import styled from "styled-components"
-import { Close, FilePresent, FilterAlt } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import styled from 'styled-components';
+import { Close, FilterAlt } from '@mui/icons-material';
+import axios from 'axios';
+import { useCallback } from 'react';
+import { useInView } from 'react-intersection-observer';
+import _ from 'lodash';
+import { RawData } from '@/rawdata';
 
-
-export default function GameListContent() {
+export default function GameListContent({}) {
+    // const [page, setPage] = useState(1);
+    // const [hasMore, setHasMore] = useState(true);
+    // const { ref, inView } = useInView();
     const [filter, setFilter] = useState(false);
+    const router = useRouter();
+    const games = RawData;
+//     const fetchGames = useCallback(_.debounce(async () => {
+//       if (!hasMore) return;
+  
+//       try {
+//         const response = await axios.get(`/api/gamelist?page=${page}&pageSize=10`);
+//         const newGames = response.data;
+  
+//         if (newGames.length === 0) {
+//           setHasMore(false);
+//         } else {
+//             setGames(prev => [...prev, ...newGames]);
+//           setPage(prev => prev + 1);
+//         }
+//       } catch (error) {
+//         console.error('Fehler beim Abrufen der Spiele:', error);
+//       }
+//     }, 1000), [page, hasMore]);
+  
+//     useEffect(() => {
+//       if (inView && hasMore) {
+//         fetchGames();
+//       }
+//     }, [inView, fetchGames, hasMore]);
+//     const fetchGames = useCallback(_.debounce(async () => {
+//   if (!hasMore) return;
+
+//   try {
+//     const response = await axios.get(`/api/games?page=${page}&pageSize=${pageSize}`);
+//     const newGames = response.data;
+
+//     // Vermeide doppelte Einträge basierend auf appid
+//     setGames(prev => {
+//       const existingIds = new Set(prev.map(game => game.appid));
+//       const filteredNewGames = newGames.filter(game => !existingIds.has(game.appid));
+//       return [...prev, ...filteredNewGames];
+//     });
+
+//     if (newGames.length === 0) {
+//       setHasMore(false);
+//     } else {
+//       setPage(prev => prev + 1);
+//     }
+//   } catch (error) {
+//     console.error('Fehler beim Abrufen der Spiele:', error);
+//   }
+// }, 1000), [page, hasMore, pageSize]);
 
 
     function handleFilter() {
         setFilter(!filter);
     }
 
+    function handleRouteToId(gameId) {
+        router.push(`/${gameId}`);
+    }
+
+console.log(games[0]);
     return (
         <StyledMain>
-            {RawData.map((game) => (
-                <StyledGameDiv key={game.id} filterActive={filter}>
-                    <StyledImage src={game.image} alt={game.name} width={500} height={500}/>
+            {games.map((game) => (
+                <StyledGameDiv key={game.id} filterActive={filter} onClick={() => handleRouteToId(game.id)}>
+                     <StyledImage src={game.image} alt={game.name} width={500} height={500}/> 
                     <StyledTextDiv>
                         {(game.name).length > 17 ? (
                             <StyledSmallHeadline>{game.name}</StyledSmallHeadline>
@@ -27,6 +87,7 @@ export default function GameListContent() {
                         <StyledParagraph>{game.gametype}</StyledParagraph>
                     </StyledTextDiv>
                 </StyledGameDiv>
+
             ))}
             <StyledFilterIcon onClick={handleFilter}/>
             {filter && (
@@ -46,7 +107,7 @@ export default function GameListContent() {
                             <StyledLabel id="gametype">Kategorie</StyledLabel>
                             <StyledSelect htmlFor="gametype">
                             <option value="alle">Alle</option>
-                            {RawData.map((game) => (
+                            {games.map((game) => (
                                 <option key={game.id} value={game.gametype}>{game.gametype}</option>    
                             ))}
                             </StyledSelect>
@@ -56,7 +117,7 @@ export default function GameListContent() {
                             <StyledLabel id="gametype">Modus</StyledLabel>
                             <StyledSelect htmlFor="gametype">
                             <option value="alle">Alle</option>
-                            {RawData.map((game) => (    
+                            {games.map((game) => (    
                                 <option key={game.id} value={game.mode}>{game.mode}</option>    
                             ))}
                             </StyledSelect>
@@ -76,8 +137,8 @@ export default function GameListContent() {
                     </StyledForm>
                 </StyledFilterDiv>
             )}
-        </StyledMain>
-    )
+        </StyledMain> 
+    );
 }
 
     const StyledMain = styled.main`

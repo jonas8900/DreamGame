@@ -41,7 +41,7 @@ export default function FavoritesContent({setFavoriteGameId, favoriteGameId}) {
                     </StyledHeadWrapper>
                     <StyledSecondHeadline>{game.gametype}</StyledSecondHeadline>
                 </StyledTextContainer>
-                <MoreInformationButton/>
+                <MoreInformationButton>Mehr infos</MoreInformationButton>
             </StyledContentDiv>
         ))}
 </main>

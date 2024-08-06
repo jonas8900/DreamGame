@@ -1,17 +1,25 @@
-import GameOfTheDayContent from "@/components/contentboxes/GameOfTheDayContent";
+import GameContent from "@/components/contentboxes/GameContent";
 import PageHead from "@/components/head/PageHead";
 import NavigationBar from "@/components/navigation/NavigationBar";
-import styled from "styled-components"
+import styled from "styled-components";
 
-
-export default function Home({setFavoriteGameId, favoriteGameId}) {
-
-    console.log(favoriteGameId);
-    return (
+export default function Home({
+  setFavoriteGameId,
+  favoriteGameId,
+  currentGameId,
+  setCurrentGameId,
+}) {
+  return (
     <>
-    <PageHead pageheadline={"Spiel des Tages"}/>
-    <GameOfTheDayContent setFavoriteGameId={setFavoriteGameId} favoriteGameId={favoriteGameId} />
-    <NavigationBar/>
+      <PageHead pageheadline={"Spiel des Tages"} />
+      <GameContent
+        setFavoriteGameId={setFavoriteGameId}
+        favoriteGameId={favoriteGameId}
+        currentGameId={currentGameId}
+        setCurrentGameId={setCurrentGameId}
+      />
+      <NavigationBar />
     </>
-    )
+  );
 }
+
