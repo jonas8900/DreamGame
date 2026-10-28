@@ -34,3 +34,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.qodo
+
+# python scripts & temp data
+*.py
+filtered_games.json

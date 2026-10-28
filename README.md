@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DreamGame
 
-## Getting Started
+DreamGame ist ein privates Projekt für eine mobile Game-Discovery-App. Die Grundidee dahinter war ein simpler Game-Finder, über den man ohne überladene Store-Seiten schnell neue Spiele entdecken und sich die wichtigsten Eckdaten (Plattformen, Spielmodus, aktuelle Spielerzahlen, Bewertungen, Preis und Trailer) anschauen kann.
 
-First, run the development server:
+## Projektstatus (Frontend-Prototyp)
+
+Ursprünglich sollte die Plattform im Hintergrund regelmäßig über die Steam-API mit aktuellen Spieledaten versorgt werden. In diesem Repository ist vor allem das Frontend umgesetzt. 
+
+Damit die App ohne Datenbank-Setup direkt lokal gestartet und durchgeklickt werden kann, laufen die Ansichten aktuell mit statischen Testdaten aus der `rawdata.js`. Erste Ansätze für den Backend-Datenimport über die Steam-API und die Speicherung in MongoDB liegen bereits unter `pages/api/` (`fetchDetails.js`, `processBatches.js`) sowie `lib/`, sind aber noch nicht an das Frontend angebunden. Auch das Filter-Menü in der Spieleliste ist bisher rein als UI-Oberfläche gebaut.
+
+## Was im Frontend umgesetzt ist
+
+- **Startseite & Entdecken-Modus:** Kartenansicht für das "Spiel des Tages" bzw. zum Durchklicken von Spielen inklusive Ausklapp-Ansicht für weitere Details, Social-Media-Links und eingebettetem YouTube-Trailer.
+- **Spieleliste:** Kompakte Übersicht aller Spiele mit direkter Verlinkung auf die jeweilige Detailseite (`/[id]`) und einem ausklappbaren Filter-Overlay.
+- **Neueste Spiele:** Listenansicht mit Fokus auf Release-Daten, Spielerzahlen und Preis.
+- **Favoriten:** Merkliste, über die man Spiele markieren und wieder entfernen kann (gespeichert im `localStorage`).
+- **Login-Screen:** UI-Entwurf für die Anmeldung unter `/login`.
+
+## Verwendete Technologien
+
+- Next.js (Pages Router) & React 18
+- styled-components für das Styling
+- Material UI Icons (`@mui/icons-material`)
+- `use-local-storage` für die Favoritenliste
+- `next-pwa` (Basis-Setup für Progressive Web App)
+- MongoDB (`mongodb`) für die vorbereiteten API-Routen
+
+## Lokal starten
+
+Für das Frontend wird keine Datenbank benötigt, da die Daten lokal aus der `rawdata.js` geladen werden.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Danach läuft das Projekt unter `http://localhost:3000`. Da das Layout für Smartphones ausgelegt ist, schaut man sich die Seite im Browser am besten über die DevTools in der mobilen Ansicht an.
